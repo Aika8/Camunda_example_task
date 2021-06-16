@@ -7,30 +7,35 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GoToBallet implements JavaDelegate {
+
+
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
         int weight = (int) delegateExecution.getVariable("weight");
         String examResult = "Undefined";
         boolean isPass = false;
 
-        if(weight > 50){
+        if (weight > 50) {
             throw new BpmnError("weightError");
         }
 
         int score = (int) delegateExecution.getVariable("exam_score");
 
-        if(score > 70){
+
+        if (score > 70) {
             isPass = true;
             examResult = "intermediate group";
-        }else if(score > 50){
+        } else if (score > 50) {
             isPass = true;
             examResult = "beginner group";
-        }else{
+        } else {
             isPass = false;
             examResult = "you failed";
         }
 
+
         delegateExecution.setVariable("examResult", examResult);
         delegateExecution.setVariable("isPass", isPass);
+
     }
 }
