@@ -6,7 +6,7 @@ camunda.bpm.admin-user:
 
 spring:
   application:
-    name: camunda_app
+    name: camunda-app
 server:
   port: 8081
 eureka:
